@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+    <header>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="device-width , initial-scale=1.0"> 
+        <style>
+            html{
+                background-color: black;
+            }
+            .Themes_Master{
+                display: flex;
+                /* flex-wrap: nowrap; */
+                flex-direction: column;
+                /* justify-content: flex-start; */
+                align-items: center;
+                margin-top: -50px;
+            }
+            .theme_btn{
+                padding: 0px;
+                border: 0px;
+            }
+            .Clr1{
+                border: inset;
+                /* border-color: white; */
+                padding: 2px;
+                width: 100px;
+                /* border-spacing: 20%;  */
+                margin-bottom: 20px;
+            }
+            .Clr1 #one{
+                background-color: aqua;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr1 #two{
+                background-color: maroon;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr2{
+                border: inset;
+               /* border-color: white; */
+                padding: 2px;
+                width: 100px;
+                /* border-spacing: 20%;  */ 
+                margin-bottom: 20px;
+            }
+            .Clr2 #one{
+                background-color: green;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr2 #two{
+                background-color: white;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr3{
+                border: inset;
+               /* border-color: white; */
+                padding: 2px;
+                width: 100px;
+                /* border-spacing: 20%;  */ 
+                margin-bottom: 20px;
+            }
+            .Clr3 #one{
+                background-color: yellow;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr3 #two{
+                background-color: red;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr4{
+                border: inset;
+               /* border-color: white; */
+                padding: 2px;
+                width: 100px;
+                /* border-spacing: 20%;  */ 
+                margin-bottom: 20px;
+            }
+            .Clr4 #one{
+                background-color: violet;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr4 #two{
+                background-color: brown;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr5{
+                border: inset;
+               /* border-color: white; */
+                padding: 2px;
+                width: 100px;
+                /* border-spacing: 20%;  */ 
+                margin-bottom: 20px;
+            }
+            .Clr5 #one{
+                background-color: pink;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr5 #two{
+                background-color: black;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr6{
+                border: inset;
+               /* border-color: white; */
+                padding: 2px;
+                width: 100px;
+                /* border-spacing: 20%;  */ 
+                margin-bottom: 20px;
+            }
+            .Clr6 #one{
+                background-color: blue;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr6 #two{
+                background-color: white;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr7{
+                border: inset;
+               /* border-color: white; */
+                padding: 2px;
+                width: 100px;
+                /* border-spacing: 20%;  */ 
+                margin-bottom: 20px;
+            }
+            .Clr7 #one{
+                background-color: black;
+                margin: 0px;
+                width: 100px;
+            }
+            .Clr7 #two{
+                background-color: white;
+                margin: 0px;
+                width: 100px;
+            }
+            .back_btn{
+                background-color: black;
+                border: dashed gold 0.3px;
+                padding: 0px;              
+            }
+            #btn_txt{
+                color: gold;
+
+            }
+            .FULLSCREEN{
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .Container{
+                display: flex;
+            }
+            .navbar{                   
+                width: fit-content;
+                /* background-color:gray; */
+                padding: 10px;
+            }
+            .menu{
+                list-style-type: none; 
+                padding: 0% ; 
+                margin: 0%;
+            }
+            .menu li {
+                margin: 0 15px;
+                width: fit-content;   
+                border-spacing: 20%;   
+                border: inset;          
+                border: aquamarine;
+                border: inset;
+                border-color: goldenrod;
+                margin: 30px;
+            }
+
+            .menu li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+            }
+
+            .menu li a:hover {
+            color: #ff9900;
+            }
+        </style>
+        <title>ATS_friendly</title> 
+    </header>
+
+    <script>
+        window.onload = function() {
+    theme_chge(undefined); // call your function here
+    font_settings()
+    increasesizeoverall('resizeMe')
+};
+            function theme_chge(Id1,Id2,DIVName)
+            {
+                
+                 //debugger                                
+                if(localStorage.getItem('theme01')==undefined && localStorage.getItem('theme02')==undefined && THEMES==undefined){
+                  localStorage.setItem('theme01',"black")
+                localStorage.setItem('theme02',"white")     
+                }                
+                else if(Id1!=undefined&&Id2!=undefined&&DIVName!=undefined){  
+                    var ElTwoID='.'+DIVName+' #'+Id1;
+                    var ElOneID ='.'+DIVName+' #'+Id2;                 
+                    const el1 = document.querySelector(ElTwoID);
+                    const el2 = document.querySelector(ElOneID);
+                    localStorage.setItem('theme01',window.getComputedStyle(el1).backgroundColor)
+                    localStorage.setItem('theme02',window.getComputedStyle(el2).backgroundColor)
+                }
+                
+                document.querySelectorAll('.BG_color').forEach(el => {el.style.backgroundColor = 
+                    localStorage.getItem('theme01')});
+                document.querySelectorAll('.txt_master').forEach(el => {el.style.color = 
+                    localStorage.getItem('theme02')});
+               // alert(ElOneID+'='+localStorage.getItem('theme01')+','+ElTwoID+':'+localStorage.getItem('theme02'));                
+            }
+            function font_settings(){
+                if(localStorage.getItem('font_settings')==undefined){
+                    localStorage.setItem('font_settings','Times New Roman')
+                }
+                
+                document.querySelectorAll(".txt_master").forEach(el => {
+                            el.style.fontFamily = localStorage.getItem('font_settings');
+                        });
+            }
+            function increasesizeoverall(ClassNameToReSize){
+                //debugger
+                    var ele = document.querySelectorAll('.'+ClassNameToReSize)
+                    if(localStorage.getItem('reontrustme') != undefined || localStorage.getItem('reontrustme') != null ){
+                        //localStorage.setItem('reontrustme',0) 
+
+                        var basecondition=parseInt(localStorage.getItem('reontrustme'))
+                     
+                    ele.forEach(el=>{
+                            const elesty = window.getComputedStyle(el);
+                            var width,height;
+                            if(!el.classList.contains('hascontent') ){
+                                width = parseFloat(elesty.width);
+                            el.style.width=(width+(20*(basecondition))+(10*(basecondition)))+'px'
+                           
+                                height = parseFloat(elesty.height);
+                            el.style.height=(height+10*(basecondition))+'px'
+                            }                
+                                                       
+                             var classarray = el.classList
+                            if(el.classList.contains('hascontent') || el.classList.contains('txt_master') ){
+                            const fntsize = parseFloat(elesty.fontSize);
+                                            el.style.fontSize = (fntsize+10*(basecondition))+'px';
+                                             if(el.classList.contains('hascontent') && !el.classList.contains('txt_master')){
+                                                el.style.margin=0;                                               
+                                             }
+                            }                            
+                    });
+                    }
+                                         
+            }
+    </script>
+
+    <body>
+        <div class="BG_color FULLSCREEN">       
+        <div class="Container">
+
+        </div>
+            <nav class="navbar">
+                <ul class="menu" >                    
+                    <li><a href="homepage.html"><span class="txt_master">HOME</span></a></li>
+                    <li><a href="page_settings.html"><span class="txt_master">SETTINGS</span></a></li>
+                </ul>
+            </nav>
+            <!-- <p class="wall">-----------------------------------------------------------------------------------------------------------------</p> -->
+            <!-- <div class="Main-container"> -->
+            <div class="logo">
+                <!-- <img src="D:\Testing web page\resume checker\web_page_logo.jpg" alt="Error" style="width: 300px; height: 350px;"> -->
+            </div>
+        
+        <div class="Themes_Master">
+            <div class="Clr1">
+                <Button class="theme_btn" onclick="theme_chge('one','two',this.closest('div').className)">
+                <P class=" resizeMe hascontent" id="one">&nbsp;</P>
+                <P class=" resizeMe hascontent" id="two">&nbsp;</P>
+                </Button>
+            </div> 
+            <div class="Clr2">
+                <Button class="theme_btn"  onclick="theme_chge('one','two',this.closest('div').className)">
+                <P class=" resizeMe hascontent" id="one">&nbsp;</P>
+                <P class=" resizeMe hascontent" id="two">&nbsp;</P>
+                </Button>
+            </div> 
+            <div class="Clr3">
+                <Button class="theme_btn"  onclick="theme_chge('one','two',this.closest('div').className)">
+                <P class=" resizeMe hascontent" id="one">&nbsp;</P>
+                <P class=" resizeMe hascontent" id="two">&nbsp;</P>
+                </Button>
+            </div> 
+            <div class="Clr4">
+                <Button class="theme_btn"  onclick="theme_chge('one','two',this.closest('div').className)">
+                <P class=" resizeMe hascontent" id="one">&nbsp;</P>
+                <P class=" resizeMe hascontent" id="two">&nbsp;</P>
+                </Button>
+            </div> 
+            <div class="Clr5">
+                <Button class="theme_btn"  onclick="theme_chge('one','two',this.closest('div').className)">
+                <P class=" resizeMe hascontent" id="one">&nbsp;</P>
+                <P class=" resizeMe hascontent" id="two">&nbsp;</P>
+                </Button>
+            </div> 
+            <div class="Clr6">
+                <Button class="theme_btn"  onclick="theme_chge('one','two',this.closest('div').className)">
+                <P class=" resizeMe hascontent" id="one">&nbsp;</P>
+                <P class=" resizeMe hascontent" id="two">&nbsp;</P>
+                </Button>
+            </div> 
+            <div class="Clr7">
+                <Button class="theme_btn"  onclick="theme_chge('one','two',this.closest('div').className)">
+                <P class=" resizeMe hascontent" id="one">&nbsp;</P>
+                <P class=" resizeMe hascontent" id="two">&nbsp;</P>
+                </Button>
+            </div> 
+        </div>  
+        </div>        
+    </body>
+</html>
