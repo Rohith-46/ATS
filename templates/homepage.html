@@ -1,0 +1,571 @@
+<!DOCTYPE html >
+    <title>ATS_friendly</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /* html{               
+                background-color: black;                                   
+            } */
+             /* <!-- .Main-container{
+                
+                align-items: center;
+                justify-content: center; 
+            }  -->    */
+            /* MAIN MENU                   */
+            .navbar{   
+                width: fit-content;
+                /* background-color:gray; */
+                padding: 10px;
+            }
+            .menu{
+                list-style-type: none; 
+                padding: 0% ; 
+                margin: 0%;
+            }
+            .menu li {
+                margin: 0 15px;
+                width: fit-content;   
+                border-spacing: 20%;   
+                border: inset;          
+                border: aquamarine;
+                border: inset;
+                border-color: goldenrod;
+                margin: 30px;
+            }
+
+            .menu li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+            }
+
+            .menu li a:hover {
+            color: #ff9900;
+            }
+            /* MAIN MENU                   */
+            .Menu_Logo{
+            display: flex;
+            }           
+            /* .wall{
+                color: white;
+                writing-mode: vertical-lr;
+                transform: rotate(180deg);  Optional: makes it top to bottom 
+                font-size: 16px;
+            } */
+            /* .logo{
+                width: fit-content;
+                height: 300px;                
+                overflow:hidden;
+                margin-top: -90px;
+                margin-left: 338px;
+            }
+           
+            .logo img {
+                
+                margin: auto;
+                width: 100%;
+                height: auto;
+            } */
+            .header_ipbox{
+                /* margin-top: 150px; */
+                display: flex;
+                align-content: flex-start;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            #header{
+                color: white; 
+                font-size: xx-large;
+                font-style: italic;                 
+                margin: 10px 0px 0px 0px;
+                text-align: center;                
+            }
+            #resume_IP{
+                /* margin: 30px 0px 0px 590px; */
+                    align-self: center;
+                color: black;                
+                background-color: white;
+                width: fit-content;
+                border: inset;
+                border-color: firebrick;
+                height: 20px;
+                margin-top: 50px;
+            }
+            .Menu-button{
+                text-align: left;
+                background-color: rgb(63, 61, 63);        
+            }
+            #resume_IP::placeholder{
+                color: black;
+                font-family: 'Times New Roman', Times, serifs;
+            }
+               .FULLSCREEN{
+                width: 100vw;
+                height: 100vh;
+            }  
+            #uploadForm{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                align-items: center;
+                flex-wrap: nowrap;
+                justify-content: center;
+            }
+            .file_selector{
+                padding-top: 1%;
+                padding-bottom: 1%;
+            }
+            #resumeFile{
+                position: absolute;
+                cursor: pointer;
+                opacity: 0;
+            }
+            #choose-btn{
+                cursor:pointer;
+            }      
+            #sumbit_file{
+                width: fit-content;
+            }
+            #result{
+                margin-top: 20px; 
+                color: green;
+                    position: absolute;
+                top: 0%;
+                right: 0%;
+            }
+            #error{
+                            margin-top: 20px; 
+                            color: red;
+                                position: absolute;
+                top: 0%;
+                right: 0%;
+            }
+
+            .gauge-container {
+                text-align: center;
+                margin: 30px 0;
+            }
+
+            /* Chrome, Edge, Safari, Opera */
+            .modal-content::-webkit-scrollbar {
+                display: none;
+            }
+
+            .modal {
+                display: none;                    /* Hidden by default */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);   /* Dark overlay */
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+                justify-items: center;
+            }
+
+            .modal-content {
+                 overflow-y: auto;
+    scrollbar-width: none;           /* Firefox */
+    -ms-overflow-style: none;        /* IE & Edge */
+                background-color: #1e1e1e;
+                padding: 25px;
+                border-radius: 12px;
+                width: 90%;
+                max-width: 700px;
+                max-height: 90vh;
+                overflow-y: auto;
+                position: relative;
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 30px;
+                color: #aaa;
+                cursor: pointer;
+            }
+
+            .close-btn:hover {
+                color: white;
+            }
+
+            .gauge {
+                position: relative;
+                text-align: -webkit-center;
+                width: 280px;
+                height: 140px;
+                margin: 0 auto;
+            }
+
+            .gauge-circle {
+                position: relative;
+                    width: 175px;
+                height: 100%;
+                border-radius: 50% 50% 50% 50%;
+                background: conic-gradient(#ffd900c2 0deg 46deg,
+                #4caf50 46deg 90deg, 
+                #ff4d4d 315deg 270deg,
+                #ff9900 90deg 180deg);
+                overflow: hidden;
+                border: inset thick;
+                border-color: white;
+                clip-path: ellipse(230% 50% at 50% 0%);
+            }
+
+            .needle {
+                position: absolute;
+                    bottom: 53%;
+                left: 50%;
+                width: 6px;
+                height: 74px;
+                background: #ff0000;
+                transform-origin: bottom center;
+                transform: rotate(-90deg);
+                transition: transform 1.5s ease;
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+            }
+
+            .gauge-center {
+                position: absolute;
+                    bottom: 45%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 6px;
+                height: 5px;
+                background: #1e1e1e;
+                border-radius: 50%;
+                border: 4px solid #fff;
+                z-index: 2;
+            }
+
+            .score-card{
+                display: flex;
+                            flex-direction: column;
+                            align-content: center;
+                            align-items: center;
+                            flex-wrap: nowrap;
+            }
+
+            .score-value {
+                position: absolute;
+                    bottom: 76px;
+                font-size: 48px;
+                font-weight: bold;
+                margin-top: 15px;
+                color: #fff;
+            }
+
+            .score-label {
+                font-size: 18px;
+                font-weight: 500;
+                color: #aaa;
+                    position: absolute;
+                font-size: xx-large;
+                font-family: monospace;
+                bottom: 33px;
+            }
+
+            .strengths-list h3,
+            .improvements-list h3,
+            .missing-keywords-list h3{
+                    color: aliceblue;
+            }
+
+            .strengths-list,
+            .improvements-list,
+            .missing-keywords-list {
+                font-size: 18px;
+                font-weight: 500;
+                color: #aaa;
+                font-size: xx-large;
+                font-family: monospace;
+                bottom: 33px;
+                border: solid gold;
+                margin-bottom: 10px;
+            }
+            
+        </style>
+    </head>
+        <script>
+            window.onload = function() {
+                theme_chge(); // call your function here
+                font_settings();
+                increasesizeoverall('resizeMe')
+            };
+            function theme_chge()
+            {
+                debugger
+                if(localStorage.getItem('theme01')==undefined && localStorage.getItem('theme02')==undefined){
+                  localStorage.setItem('theme01',"black")
+                localStorage.setItem('theme02',"white")     
+                }
+                //debugger   
+                document.documentElement.style.backgroundColor = localStorage.getItem('theme01');             
+                //document.querySelectorAll('.BG_color').forEach(el => {el.style.backgroundColor = localStorage.getItem('theme01')});
+                document.querySelectorAll('.txt_master').forEach(el => {el.style.color = 
+                    localStorage.getItem('theme02')});
+                //alert(localStorage.getItem('theme01')+','+localStorage.getItem('theme02'));                
+            }
+            function font_settings(){
+                debugger
+                if(localStorage.getItem('font_settings')==undefined){
+                    localStorage.setItem('font_settings','Times New Roman')
+                }
+       
+                document.querySelectorAll(".txt_master").forEach(el => {
+                            el.style.fontFamily = localStorage.getItem('font_settings');
+                        });
+            }
+            function increasesizeoverall(ClassNameToReSize){
+                debugger
+                    var ele = document.querySelectorAll('.'+ClassNameToReSize)
+                    if(localStorage.getItem('reontrustme') != undefined || localStorage.getItem('reontrustme') != null ){
+                        //localStorage.setItem('reontrustme',0) 
+
+                        var basecondition=parseInt(localStorage.getItem('reontrustme'))
+                     
+                    ele.forEach(el=>{
+                            const elesty = window.getComputedStyle(el);
+                            var width,height;
+                            if(!el.classList.contains('hascontent') ){
+                                width = parseFloat(elesty.width);
+                            el.style.width=(width+(20*(basecondition))+(10*(basecondition)))+'px'
+                           
+                                height = parseFloat(elesty.height);
+                            el.style.height=(height+10*(basecondition))+'px'
+                            }                
+                                                       
+                             var classarray = el.classList
+                            if(el.classList.contains('hascontent') || el.classList.contains('txt_master') ){
+                            const fntsize = parseFloat(elesty.fontSize);
+                                            el.style.fontSize = (fntsize+10*(basecondition))+'px';
+                                             if(el.classList.contains('hascontent') && !el.classList.contains('txt_master')){
+                                                el.style.margin=0;                                               
+                                             }
+                            }                            
+                    });
+                    }
+                                         
+            }
+        
+            function score_label_condi(score_count){
+                if(score_count >=0 && score_count <=25){
+                    return "POOR"
+                }
+                else if (score_count >25 && score_count <=50){
+                    return "BETTER"
+                }
+                else if (score_count >50 && score_count <=75){
+                    return "AVERAGE"
+                }
+                else if (score_count >75 && score_count <=100){
+                    return "BEST"
+                }
+            }
+            function update_score_gauge(score_count){
+                rotation = -90 + (score_count * 1.8)
+                const needle = document.getElementById("needle");
+                needle.style.transform = `rotate(${rotation}deg)`;
+                document.getElementById("scoreValue").textContent = score_count;
+            }
+            
+            document.addEventListener('DOMContentLoaded',function (){
+            debugger
+                const check_uploadform = document.getElementById('uploadForm')
+                if(check_uploadform=='' || check_uploadform == undefined){
+console.warn("need to load the upload file input field ")
+                }
+                else{
+                        document.getElementById('uploadForm').addEventListener('submit',async function resume_submit(event) {
+                        event.preventDefault();
+                        const fileformat = document.getElementById('resumeFile')
+                        const file = fileformat.files[0]
+                        if (!file){
+                            document.getElementById('error').textContent = 'Please provide proper resume in pdf format to scan';
+                            return;
+                        }
+                        const filedata = new FormData();
+                        filedata.append('resume',file);
+                        try {
+                            debugger
+                            const response = await fetch('/upload',{method:'POST',body:filedata})
+                            .then(response => response.json())
+                            .then(data =>{
+                                if (data.status == "success"){
+                                    window.showAnalysisModal();
+                                    analyzed_response = JSON.parse(data.message);
+                                    score_count = analyzed_response.overall_score
+
+                                    score_gauge_count = update_score_gauge(score_count)
+                                    document.getElementById("scoreLabel").textContent = score_label_condi(score_count);
+                                   
+                                    // === Display Strengths (Array) ===
+                                    const strengthsList = document.getElementById('strengths-list');
+                                    if (strengthsList) {
+                                        strengthsList.innerHTML = analyzed_response
+                                                                                .strengths
+                                                                                    .map(item => 
+                                                                                            `<li>${item}</li>`
+                                                                                        ).join('');
+                                    }
+
+                                    // === Display Improvements (Array) ===
+                                    const improvementsList = document.getElementById('improvements-list');
+                                    if (improvementsList) {
+                                        improvementsList.innerHTML = analyzed_response
+                                                                                .improvements
+                                                                                    .map(item => 
+                                                                                            `<li>${item}</li>`
+                                                                                        ).join('');
+                                    }8
+
+                                    // === Display Missing Keywords (Array) ===
+                                    const keywordsList = document.getElementById('missing-keywords-list');
+                                    if (keywordsList) {
+                                        keywordsList.innerHTML = analyzed_response
+                                                                                .missing_keywords
+                                                                                    .map(item => 
+                                                                                            `<li>${item}</li>`
+                                                                                        ).join('');
+                                    }
+                                }
+                                else{
+                                    throw new Error(`Server error: ${response.status}`);
+                                    return;
+                                }
+                            });
+                                document.getElementById('error').textContent = '';
+                        } catch (error) {
+                            console.error('Upload failed:', error);
+                            document.getElementById('error').textContent = 'Server Error,Try after some other time';
+                            document.getElementById('result').textContent = '';
+                        }
+                    });
+                }
+
+                const check_upload_ipbox = document.getElementById('resumeFile')
+                if(check_upload_ipbox=='' || check_upload_ipbox == undefined){
+                    console.warn("need to load the upload file input field ")
+                }else{
+                    document.getElementById('resumeFile').addEventListener("change", function(event) {
+                        debugger
+                        event.preventDefault();
+                        const fileformat = document.getElementById('resumeFile')
+                                const file = fileformat.files[0]
+                                if(!file){
+                                    document.getElementById("file-name-display").textContent='';
+                                    return
+                                }
+                                document.getElementById("file-name-display").textContent=file.name;
+                    });
+                }
+
+                const modal = document.getElementById('analysisModal');
+                const closeBtn = document.getElementById('closeModal');
+                if(check_upload_ipbox=='' || check_upload_ipbox == undefined){
+                    console.warn("need to load the upload file input field ")
+                }else{
+
+                    // Close button
+                    closeBtn.addEventListener('click', () => {
+                        modal.style.display = 'none';
+                    });
+
+                    // Click outside to close
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            modal.style.display = 'none';
+                        }
+                    });
+
+                    // Make this function globally available
+                    window.showAnalysisModal = function() {
+                        if (modal) {
+                            modal.style.display = 'flex';
+                        }
+                    };
+                }
+            })
+    </script>
+    <body>
+        <div class="BG_color FULLSCREEN">
+             <div id="result"></div>
+    <div id="error"></div>
+        <!-- <button  class="Menu-button" type="submit">Menu</button> -->
+        <div class="Menu_Logo">
+            <nav class="navbar">
+                <ul class="menu" >                    
+                    <li><a href="themes.html"><span class="txt_master">THEMES</span></a></li>
+                    <li><a href="page_settings.html"><span class="txt_master">SETTINGS</span></a></li>
+                </ul>
+            </nav>
+            <!-- <div class="Main-container"> -->
+            <div class="logo">
+                <!-- <img src="sample.jpg" alt="Error" style="width: 300px; height: 350px;"> -->
+            </div>
+        </div>        
+        <br>
+        <div class="header_ipbox">
+            <p id="header" class="txt_master resizeMe hascontent">Ats-Friendly</p>
+            <br>
+
+            <form id="uploadForm">
+                <div class="file_selector">
+                    <input type="file" id="resumeFile" accept=".pdf" required>
+                    <button type="button" class="choose-btn">Choose PDF</button>
+                    <span class="txt_master" id="file-name-display"></span>
+                </div>
+            <button type="submit" id="sumbit_file">Upload & Check ATS Score</button>
+            </form>
+            <!-- <input class="txt_master resizeMe" id="resume_IP" type="text" width="fit-content" placeholder="Select file"> -->
+        </div>
+
+        <!-- Modal / Overlapping Window -->
+<div class="modal" id="analysisModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        
+        <div class="AI-result" id="AI-result">
+            <div class="gauge-container">
+                <h3>Overall Resume Score</h3>
+                <div class="gauge">
+                    <div class="gauge-circle">
+                        <div class="needle" id="needle"></div>
+                        <div class="gauge-center"></div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-value" id="scoreValue">0</div>
+                        <div class="score-label" id="scoreLabel">Poor</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strengths-list">
+                <h3>Key Strengths</h3>
+                <ul id="strengths-list"></ul>
+            </div>
+
+            <div class="improvements-list">
+                <h3>Areas to Improve</h3>
+                <ul id="improvements-list"></ul>
+            </div>
+
+            <div class="missing-keywords-list">
+                <h3>Missing Keywords</h3>
+                <ul id="missing-keywords-list"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- </div> -->
+     </div>
+    </body>
+</html>
